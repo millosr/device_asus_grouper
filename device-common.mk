@@ -140,6 +140,18 @@ WIFI_BAND := 802_11_BG
 
 
 # nAOSP changes
+
+# Superuser
+ifneq ($(TARGET_NO_SUPERUSER),true)
+
+PRODUCT_PACKAGES += \
+    su
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.root_access=3
+
+endif
+
 PRODUCT_PACKAGES += \
     Launcher3
 
