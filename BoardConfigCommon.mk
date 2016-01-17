@@ -82,16 +82,25 @@ BOARD_USES_GROUPER_MODULES := true
 
 TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
 
+# Superuser
+TARGET_NO_SUPERUSER := false
+ifneq ($(TARGET_NO_SUPERUSER),true)
+SUPERUSER_EMBEDDED := true
+endif
+
+# SELinux
 BOARD_SEPOLICY_DIRS += \
         device/asus/grouper/sepolicy
 
 BOARD_SEPOLICY_UNION += \
+        app.te \
         file_contexts \
         genfs_contexts \
         bluetooth.te \
         device.te \
         domain.te \
         drmserver.te \
+        init.te \
         init_shell.te \
         file.te \
         gpsd.te \
@@ -101,6 +110,7 @@ BOARD_SEPOLICY_UNION += \
         recovery.te \
         rild.te \
         sensors_config.te \
+        shell.te \
         surfaceflinger.te \
         system_app.te \
         system_server.te \

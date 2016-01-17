@@ -5,3 +5,7 @@ ccf72777f84a23854ecb3e542ae22768 c42f72f08ff0e7a6c42208d229d80011 ./build/target
 6d8b2beadcdf61823d3983d843daeb5b d163e7565ee60f811f381fc903dbe47e ./build/target/product/sdk_base.mk
 d1578798dbd83f0071a2960c06f96e63 107b7fb67d57a6ff7ecdd6ea034b3b1c ./build/tools/releasetools/common.py
 e6afb537eacb738b1e99426252907765 435f04a99c10f7cf4a563525199cd53d ./build/tools/releasetools/ota_from_target_files
+4409b4a843da4c319043ad3b400e2bde 9f8836d8701b1cbd907b2098c484be9e ./external/sepolicy/app.te
+88a8289350b537b31de93f9ea78fb9f1 2c6f60b24520197745cb571e0af37326 ./external/sepolicy/domain.te
+4d3ec51167ac525a6ef499a51b321f7c 7d98b2feb5af61648058e047cf3a7486 ./system/core/include/private/android_filesystem_config.h
+b03ced5077d3f16b01a397e1b5bf4546 52115152c48d258ae2387dea54105d54 ./system/core/rootdir/init.rc

@@ -14,6 +14,9 @@
 # limitations under the License.
 #
 
+# Local variables (can be duplicate from BoardConfig.mk)
+TARGET_NO_SUPERUSER := false
+
 ifeq ($(TARGET_PREBUILT_KERNEL),)
   LOCAL_KERNEL := device/asus/grouper/kernel
 else
