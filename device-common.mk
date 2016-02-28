@@ -14,6 +14,9 @@
 # limitations under the License.
 #
 
+# Local variables (can be duplicate from BoardConfig.mk)
+TARGET_NO_SUPERUSER := false
+
 ifeq ($(TARGET_PREBUILT_KERNEL),)
   LOCAL_KERNEL := device/asus/grouper/kernel
 else
@@ -145,9 +148,40 @@ PRODUCT_COPY_FILES += \
 WIFI_BAND := 802_11_BG
  $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk)
 
+
+# nAOSP changes
+
+# Superuser
+ifneq ($(TARGET_NO_SUPERUSER),true)
+
+PRODUCT_PACKAGES += \
+    su
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.root_access=3
+
+endif
+
 PRODUCT_PACKAGES += \
     Launcher3
+
+# Busybox
+PRODUCT_PACKAGES += \
+    busybox
 
 # Boot Animation
 PRODUCT_COPY_FILES += \
     device/asus/grouper/bootanimation.zip:system/media/bootanimation.zip
+
+# ROM Updater
+ifeq ($(ROM_BUILD_NUM),)
+  $(error No ROM_BUILD_NUM defined. please export the value (export ROM_BUILD_NUM=xx))
+endif
+
+PRODUCT_PACKAGES += \
+    ROMUpdater
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.build.version.updater=nAOSProm-6.0-$(subst aosp_,,$(TARGET_PRODUCT))-b$(ROM_BUILD_NUM) \
+    persist.rom.updater.uri=https://www.dropbox.com/s/rdkhavjzfqiuzso/updates.txt?dl=1
+

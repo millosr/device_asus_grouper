@@ -82,6 +82,16 @@ BOARD_USES_GROUPER_MODULES := true
 
 TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
 
+# Superuser
+TARGET_NO_SUPERUSER := false
+ifneq ($(TARGET_NO_SUPERUSER),true)
+SUPERUSER_EMBEDDED := true
+endif
+
+# custom ota
+BOARD_CUSTOM_OTA_MK := device/asus/grouper/custom/customota.mk
+
+# SELinux
 BOARD_SEPOLICY_DIRS += \
         device/asus/grouper/sepolicy
 
