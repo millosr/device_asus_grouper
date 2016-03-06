@@ -114,6 +114,8 @@ PRODUCT_PACKAGES += \
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
+    fsck.f2fs \
+    mkfs.f2fs \
     e2fsck \
     setup_fs
 
@@ -180,8 +182,4 @@ endif
 
 PRODUCT_PACKAGES += \
     ROMUpdater
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.build.version.updater=nAOSProm-6.0-$(subst aosp_,,$(TARGET_PRODUCT))-b$(ROM_BUILD_NUM) \
-    persist.rom.updater.uri=https://www.dropbox.com/s/rdkhavjzfqiuzso/updates.txt?dl=1
 
