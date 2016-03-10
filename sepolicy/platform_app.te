@@ -5,3 +5,8 @@ allow platform_app property_socket:sock_file write;
 #ROM Updater
 set_prop(platform_app, system_prop)
 
+#QS ADB over Network
+set_prop(platform_app, ctl_default_prop)
+set_prop(platform_app, shell_prop)
+
+
