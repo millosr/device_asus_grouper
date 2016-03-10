@@ -183,3 +183,11 @@ endif
 PRODUCT_PACKAGES += \
     ROMUpdater
 
+# ViPER4Android
+PRODUCT_PACKAGES += \
+    ViPER4Android \
+    libv4a_fx_ics
+
+PRODUCT_COPY_FILES += \
+    device/asus/grouper/audio_effects.conf:system/etc/audio_effects.conf
+

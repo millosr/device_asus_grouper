@@ -92,6 +92,9 @@ ifneq ($(TARGET_NO_SUPERUSER),true)
 SUPERUSER_EMBEDDED := true
 endif
 
+# ViPER4Android
+VIPER4ANDROID_MODE := NEON
+
 # custom ota
 BOARD_CUSTOM_OTA_MK := device/asus/grouper/custom/customota.mk
 
