@@ -189,5 +189,6 @@ PRODUCT_PACKAGES += \
     libv4a_fx_ics
 
 PRODUCT_COPY_FILES += \
-    device/asus/grouper/audio_effects.conf:system/etc/audio_effects.conf
+    device/asus/grouper/audio_effects.conf:system/etc/audio_effects.conf \
+    packages/apps/ViPER4AndroidFX/android_4.x-5.x/libs/armeabi/libV4AJniUtils.so:system/app/ViPER4Android/lib/arm/libV4AJniUtils.so
 
