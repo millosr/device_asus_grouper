@@ -241,4 +241,6 @@
     <!-- Set lowmemorykiller threshold -->
     <integer name="config_lowMemoryKillerMinFreeKbytesAbsolute">16384</integer>
 
+    <!-- Enable doze powersaving -->
+    <bool name="config_enableAutoPowerModes">true</bool>
 </resources>

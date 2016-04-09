@@ -192,3 +192,7 @@ PRODUCT_COPY_FILES += \
     device/asus/grouper/audio_effects.conf:system/etc/audio_effects.conf \
     packages/apps/ViPER4AndroidFX/android_4.x-5.x/libs/armeabi/libV4AJniUtils.so:system/app/ViPER4Android/lib/arm/libV4AJniUtils.so
 
+# PerformanceControl
+PRODUCT_PACKAGES += \
+    PerformanceControl
+
