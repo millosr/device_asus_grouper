@@ -166,3 +166,15 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     device/asus/grouper/bootanimation.zip:system/media/bootanimation.zip
 
+# ROM Updater
+ifeq ($(ROM_BUILD_SUFFIX),)
+  $(error No ROM_BUILD_SUFFIX defined. please export the value (export ROM_BUILD_SUFFIX=rxx))
+endif
+
+PRODUCT_PACKAGES += \
+    ROMUpdater
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.build.version.updater=n$(TARGET_PRODUCT)-$(PLATFORM_VERSION)-$(ROM_BUILD_SUFFIX) \
+    persist.rom.updater.uri=https://www.dropbox.com/s/rdkhavjzfqiuzso/updates.txt?dl=1
+

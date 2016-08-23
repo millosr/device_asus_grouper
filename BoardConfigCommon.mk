@@ -88,6 +88,9 @@ ifneq ($(TARGET_NO_SUPERUSER),true)
 SUPERUSER_EMBEDDED := true
 endif
 
+# custom ota
+BOARD_CUSTOM_OTA_MK := device/asus/grouper/custom/customota.mk
+
 # SELinux
 BOARD_SEPOLICY_DIRS += \
         device/asus/grouper/sepolicy
