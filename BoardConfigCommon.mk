@@ -89,3 +89,7 @@ TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
 BOARD_SEPOLICY_DIRS += \
         device/asus/grouper/sepolicy
 
+# aosp-7 additions
+WITH_DEXPREOPT := false
+BOARD_KERNEL_CMDLINE := androidboot.selinux=permissive
+
