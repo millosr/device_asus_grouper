@@ -34,6 +34,6 @@ DEVICE_PACKAGE_OVERLAYS := \
     device/asus/grouper/overlay
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.build.version.updater=nAOSProm-6.0-grouper-b$(ROM_BUILD_NUM) \
+    ro.build.version.updater=nAOSProm-7.0-grouper-b$(ROM_BUILD_NUM) \
     persist.rom.updater.uri=http://bit.ly/1Sp0mws
 

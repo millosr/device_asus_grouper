@@ -36,17 +36,26 @@ TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_VARIANT := cortex-a9
 
+# Filesystem
 TARGET_USERIMAGES_USE_EXT4 := true
-ifeq ($(HOST_OS),linux)
 TARGET_USERIMAGES_USE_F2FS := true
-endif
 
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 681574400
-# Disable journaling on system.img to save space.
-BOARD_SYSTEMIMAGE_JOURNAL_SIZE := 0
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 6567231488
 BOARD_CACHEIMAGE_PARTITION_SIZE := 464519168
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 6567231488
 BOARD_FLASH_BLOCK_SIZE := 4096
+
+# Disable journaling on system.img to save space
+BOARD_SYSTEMIMAGE_JOURNAL_SIZE := 0
+
+# Only pre-optimize the boot image
+WITH_DEXPREOPT_BOOT_IMG_ONLY := true
+
+# Configure jemalloc for low-memory
+MALLOC_SVELTE := true
+
+# Use clang platform builds
+USE_CLANG_PLATFORM_BUILD := true
 
 # Wifi related defines
 BOARD_WPA_SUPPLICANT_DRIVER := NL80211
