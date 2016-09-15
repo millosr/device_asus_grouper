@@ -36,6 +36,11 @@ TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_VARIANT := cortex-a9
 
+# Jack
+ifeq ($(ANDROID_JACK_VM_ARGS),)
+  ANDROID_JACK_VM_ARGS := -Dfile.encoding=UTF-8 -XX:+TieredCompilation -Xmx4096m
+endif
+
 # Filesystem
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
@@ -107,4 +112,3 @@ BOARD_CUSTOM_OTA_MK := device/asus/grouper/custom/customota.mk
 # SELinux
 BOARD_SEPOLICY_DIRS += \
         device/asus/grouper/sepolicy
-
