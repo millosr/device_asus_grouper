@@ -11,6 +11,6 @@ allow init device:sock_file { relabelfrom getattr }; #/init.superuser.rc
 allow init kernel:system syslog_read;
 
 #SuperSU support
-allow init system_file:file execute_no_trans;
+#allow init system_file:file execute_no_trans;
 allow zygote init:unix_stream_socket { read write };
 allow init kernel:security { load_policy read_policy};
