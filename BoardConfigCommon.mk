@@ -41,6 +41,8 @@ ifeq ($(ANDROID_JACK_VM_ARGS),)
   ANDROID_JACK_VM_ARGS := -Dfile.encoding=UTF-8 -XX:+TieredCompilation -Xmx4096m
 endif
 
+BOARD_KERNEL_CMDLINE := androidboot.selinux=permissive
+
 # Filesystem
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
@@ -53,14 +55,11 @@ BOARD_FLASH_BLOCK_SIZE := 4096
 # Disable journaling on system.img to save space
 BOARD_SYSTEMIMAGE_JOURNAL_SIZE := 0
 
-# Only pre-optimize the boot image
-WITH_DEXPREOPT_BOOT_IMG_ONLY := true
+# Don't dex preoptimize because of small system partition
+WITH_DEXPREOPT := false
 
 # Configure jemalloc for low-memory
 MALLOC_SVELTE := true
-
-# Use clang platform builds
-USE_CLANG_PLATFORM_BUILD := true
 
 # Wifi related defines
 BOARD_WPA_SUPPLICANT_DRIVER := NL80211
