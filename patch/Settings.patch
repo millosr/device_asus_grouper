@@ -1,0 +1,28 @@
+diff --git a/src/com/android/settings/widget/SettingsAppWidgetProvider.java b/src/com/android/settings/widget/SettingsAppWidgetProvider.java
+index 38fed94..b5b9b63 100644
+--- a/src/com/android/settings/widget/SettingsAppWidgetProvider.java
++++ b/src/com/android/settings/widget/SettingsAppWidgetProvider.java
+@@ -33,6 +33,7 @@ import android.os.AsyncTask;
+ import android.os.Handler;
+ import android.os.IPowerManager;
+ import android.os.PowerManager;
++import android.os.Process;
+ import android.os.RemoteException;
+ import android.os.ServiceManager;
+ import android.os.UserManager;
+@@ -716,8 +717,13 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
+     public static void updateWidget(Context context) {
+         RemoteViews views = buildUpdate(context);
+         // Update specific list of appWidgetIds if given, otherwise default to all
+-        final AppWidgetManager gm = AppWidgetManager.getInstance(context);
+-        gm.updateAppWidget(THIS_APPWIDGET, views);
++        try {
++            final AppWidgetManager gm = AppWidgetManager.getInstance(context);
++            gm.updateAppWidget(THIS_APPWIDGET, views);
++        } catch (IllegalStateException e) {
++            Log.e(TAG, "catched IllegalStateException, killing process", e);
++            Process.killProcess(Process.myPid());
++        }
+         checkObserver(context);
+     }
+ 
