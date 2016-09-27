@@ -169,8 +169,8 @@ PRODUCT_PACKAGES += \
     Launcher3
 
 # Busybox
-#PRODUCT_PACKAGES += \
-#    busybox
+PRODUCT_PACKAGES += \
+    busybox
 
 # Boot Animation
 PRODUCT_COPY_FILES += \
