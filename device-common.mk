@@ -197,7 +197,3 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     PerformanceControl
 
-# Open source libstagefrighthw
-PRODUCT_PACKAGES += \
-    libstagefrighthw
-
