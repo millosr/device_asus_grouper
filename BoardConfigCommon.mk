@@ -41,8 +41,6 @@ ifeq ($(ANDROID_JACK_VM_ARGS),)
   ANDROID_JACK_VM_ARGS := -Dfile.encoding=UTF-8 -XX:+TieredCompilation -Xmx4096m
 endif
 
-BOARD_KERNEL_CMDLINE := androidboot.selinux=permissive
-
 # Filesystem
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
