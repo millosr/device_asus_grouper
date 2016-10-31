@@ -34,7 +34,8 @@ PRODUCT_PROPERTY_OVERRIDES := \
     tf.enable=y \
     persist.sys.media.legacy-drm=true \
     drm.service.enabled=true \
-    media.stagefright.less-secure=true
+    media.stagefright.less-secure=true \
+    media.stagefright.legacyencoder=true
 
 # libhwui flags
 PRODUCT_PROPERTY_OVERRIDES += \
