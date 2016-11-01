@@ -199,3 +199,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     PerformanceControl
 
+# Backup Tool
+PRODUCT_COPY_FILES += \
+    device/asus/grouper/custom/backuptool/backuptool.sh:install/bin/backuptool.sh \
+    device/asus/grouper/custom/backuptool/backuptool.functions:install/bin/backuptool.functions \
+    device/asus/grouper/custom/backuptool/50-base.sh:system/addon.d/50-base.sh
+
