@@ -94,7 +94,7 @@ ifneq ($(HAVE_NVIDIA_PROP_SRC),false)
 endif
 
 # Override healthd HAL
-BOARD_HAL_STATIC_LIBRARIES := libhealthd.tegra3
+BOARD_HAL_STATIC_LIBRARIES := libdumpstate.grouper libhealthd.tegra3
 
 # Avoid the generation of ldrcc instructions
 NEED_WORKAROUND_CORTEX_A9_745320 := true
@@ -108,6 +108,24 @@ VIPER4ANDROID_MODE := NEON
 
 # custom ota
 BOARD_CUSTOM_OTA_MK := device/asus/grouper/custom/customota.mk
+
+# Use clang platform builds
+USE_CLANG_PLATFORM_BUILD := true
+
+TARGET_GCC_VERSION_EXP := 4.9
+
+# Various optimizations
+TARGET_DISABLE_ARM_PIE := true
+TARGET_GLOBAL_CFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=hardfp -gtoggle -s -DNDEBUG -march=armv7-a -mthumb -O2 -funroll-loops -mimplicit-it=always -mno-warn-deprecated -mauto-it --disable-docs -mtls-dialect=gnu2 --param l1-cache-size=32 --param l1-cache-line-size=32 --param l2-cache-size=1024 --param simultaneous-prefetches=6 --param prefetch-latency=400 -mvectorize-with-neon-quad
+TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=hardfp -gtoggle -s -DNDEBUG -O2 -funroll-loops -mthumb -march=armv7-a -mimplicit-it=always -mno-warn-deprecated -mauto-it --disable-docs -mtls-dialect=gnu2 --param l1-cache-size=32 --param l1-cache-line-size=32 --param l2-cache-size=1024 --param simultaneous-prefetches=6 --param prefetch-latency=400 -mvectorize-with-neon-quad
+# TARGET_BOOTANIMATION_PRELOAD := true
+BOARD_SKIP_ANDROID_DOC_BUILD := true
+DISABLE_DROIDDOC := true
+# TARGET_BOOTANIMATION_TEXTURE_CACHE := false
+TARGET_ENABLE_NON_PIE_SUPPORT := true
+HWUI_COMPILE_FOR_PERF := true
+$(call add-product-dex-preopt-module-config,services,--compiler-filter=everything)
+
 
 # SELinux
 BOARD_SEPOLICY_DIRS += \
