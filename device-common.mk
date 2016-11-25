@@ -196,8 +196,8 @@ PRODUCT_COPY_FILES += \
     packages/apps/ViPER4AndroidFX/android_4.x-5.x/libs/armeabi/libV4AJniUtils.so:system/app/ViPER4Android/lib/arm/libV4AJniUtils.so
 
 # PerformanceControl
-PRODUCT_PACKAGES += \
-    PerformanceControl
+# PRODUCT_PACKAGES += \
+#    PerformanceControl
 
 # Backup Tool
 PRODUCT_COPY_FILES += \
