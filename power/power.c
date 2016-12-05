@@ -33,13 +33,14 @@
 #include <hardware/power.h>
 
 #define BOOST_PATH      "/sys/devices/system/cpu/cpufreq/interactive/boost"
+#define DOUBLE_TAP_TO_WAKE_PATH "/sys/android_touch/doubletap_wake"
 #define UEVENT_MSG_LEN 2048
 #define TOTAL_CPUS 4
 #define RETRY_TIME_CHANGING_FREQ 20
 #define SLEEP_USEC_BETWN_RETRY 200
-#define LOW_POWER_MAX_FREQ "640000"
+#define LOW_POWER_MAX_FREQ "666000"
 #define LOW_POWER_MIN_FREQ "51000"
-#define NORMAL_MAX_FREQ "1300000"
+#define NORMAL_MAX_FREQ "1500000"
 #define UEVENT_STRING "online@/devices/system/cpu/"
 
 static int boost_fd = -1;
@@ -179,6 +180,22 @@ static void uevent_init()
     return;
 }
 
+static void grouper_power_set_feature(__attribute__((unused)) struct power_module *module, feature_t feature,
+				      __attribute__((unused)) int state)
+{
+    switch (feature) {
+    case POWER_FEATURE_DOUBLE_TAP_TO_WAKE:
+        pthread_mutex_lock(&low_power_mode_lock);
+        sysfs_write(DOUBLE_TAP_TO_WAKE_PATH, state ? "1\n" : "0\n");
+        ALOGD("Set the POWER_FEATURE_DOUBLE_TAP_TO_WAKE to %d\n", state);
+        pthread_mutex_unlock(&low_power_mode_lock);
+        break;
+    default:
+        ALOGW("Error setting the feature, it doesn't exist %d\n", feature);
+        break;
+    }
+}
+
 static void grouper_power_init( __attribute__((unused)) struct power_module *module)
 {
     /*
@@ -271,4 +288,5 @@ struct power_module HAL_MODULE_INFO_SYM = {
     .init = grouper_power_init,
     .setInteractive = grouper_power_set_interactive,
     .powerHint = grouper_power_hint,
+    .setFeature = grouper_power_set_feature,
 };
