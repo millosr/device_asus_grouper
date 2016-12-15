@@ -132,7 +132,5 @@ TARGET_ENABLE_NON_PIE_SUPPORT := true
 HWUI_COMPILE_FOR_PERF := true
 $(call add-product-dex-preopt-module-config,services,--compiler-filter=everything)
 
-
-# SELinux
-BOARD_SEPOLICY_DIRS += \
-        device/asus/grouper/sepolicy
+TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
+BOARD_SEPOLICY_DIRS += device/asus/grouper/sepolicy

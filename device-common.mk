@@ -30,6 +30,15 @@ PRODUCT_PROPERTY_OVERRIDES := \
     drm.service.enabled=true \
     media.stagefright.less-secure=true
 
+# disable Captive portal check
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.disable_captive_portal=1
+
+# ART
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.dex2oat-swap=false \
+    ro.sys.fw.dex2oat_thread_count=5
+
 # libhwui flags
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.hwui.render_dirty_regions=false
@@ -65,6 +74,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
     frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
+    frameworks/native/data/etc/com.nxp.mifare.xml:system/etc/permissions/com.nxp.mifare.xml \
     frameworks/native/data/etc/android.hardware.ethernet.xml:system/etc/permissions/android.hardware.ethernet.xml
 
 PRODUCT_COPY_FILES += \
@@ -85,6 +95,7 @@ PRODUCT_PACKAGES += \
     libdgv1
 
 PRODUCT_PACKAGES += \
+    sensors-config \
     lights.grouper \
     audio.primary.grouper \
     power.grouper \
@@ -92,6 +103,7 @@ PRODUCT_PACKAGES += \
     audio.usb.default \
     audio.r_submix.default \
     librs_jni \
+    libemoji \
     l2ping \
     hcitool \
     bttest \
@@ -113,6 +125,11 @@ PRODUCT_PACKAGES += \
     mkfs.f2fs \
     e2fsck \
     setup_fs
+
+# IPv6 tethering
+PRODUCT_PACKAGES += \
+    ebtables \
+    ethertypes
 
 PRODUCT_CHARACTERISTICS := tablet,nosdcard
 
@@ -186,10 +203,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     device/asus/grouper/audio_effects.conf:system/etc/audio_effects.conf \
     packages/apps/ViPER4AndroidFX/android_4.x-5.x/libs/armeabi/libV4AJniUtils.so:system/app/ViPER4Android/lib/arm/libV4AJniUtils.so
-
-# PerformanceControl
-# PRODUCT_PACKAGES += \
-#    PerformanceControl
 
 # Backup Tool
 PRODUCT_COPY_FILES += \
